@@ -2,14 +2,14 @@
 
 # Install required packages:
 # install.packages("pak")
-# pak::pak('surveydown-dev/surveydown') # Development version from github
+# pak::pak("surveydown-dev/surveydown") # Development version from GitHub
 
 # Load packages
 library(surveydown)
 
 # Database setup --------------------------------------------------------------
 #
-# Details at: https://surveydown.org/manuals/storing-data
+# Details at: https://surveydown.org/docs/storing-data
 #
 # surveydown stores data on any PostgreSQL database. We recommend
 # https://supabase.com/ for a free and easy to use service.
@@ -27,6 +27,10 @@ library(surveydown)
 # ignore = FALSE or just delete this argument.
 
 db <- sd_db_connect(ignore = TRUE)
+
+# UI setup --------------------------------------------------------------------
+
+ui <- sd_ui()
 
 # Server setup ----------------------------------------------------------------
 
@@ -47,5 +51,5 @@ server <- function(input, output, session) {
 
 }
 
-# shinyApp() initiates your app - don't change it
-shiny::shinyApp(ui = sd_ui(), server = server)
+# Launch the app
+shiny::shinyApp(ui = ui, server = server)
